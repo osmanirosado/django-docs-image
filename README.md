@@ -1,2 +1,3 @@
-# django-docs-image
-Docker image to serve Django Documentation
+# Django Documentation
+
+A docker image with the documentation of Django 1.11.
