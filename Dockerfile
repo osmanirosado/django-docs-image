@@ -4,6 +4,7 @@ FROM bash:5.0 as builder
 ADD https://docs.djangoproject.com/m/docs/django-docs-1.11-en.zip /home
 
 # Unpack the documentation
+RUN mkdir /home/docs
 RUN unzip /home/django-docs-1.11-en.zip -d /home/docs
 
 # Grant read and execute permits to others on docs directory
