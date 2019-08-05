@@ -1,16 +1,17 @@
 FROM bash:latest as builder
 
-ARG version = 1.11
+ARG version=1.11
+
+WORKDIR /home
 
 # Download the documentation
-ADD https://docs.djangoproject.com/m/docs/django-docs-${version}-en.zip /home
+RUN wget -O archive.zip https://docs.djangoproject.com/m/docs/django-docs-${version}-en.zip
 
 # Unpack the documentation
-RUN mkdir /home/docs
-RUN unzip -q /home/django-docs-${version}-en.zip -d /home/docs
+RUN mkdir docs && unzip -q archive.zip -d docs
 
 # Grant read and execute permits to others on docs directory
-RUN chmod -R o+rx /home/docs
+RUN chmod -R o+rx docs
 
 FROM httpd:latest
 
