@@ -13,7 +13,7 @@ RUN mkdir docs && unzip -q archive.zip -d docs
 # Grant read and execute permits to others on docs directory
 RUN chmod -R o+rx docs
 
-FROM httpd:latest
+FROM httpd:alpine
 
 # Copy the result obtained in builder stage
 COPY --from=builder /home/docs /usr/local/apache2/htdocs
